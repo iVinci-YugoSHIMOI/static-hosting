@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="#" method="POST">
+      <fieldset>
+        <legend>得意言語(チェックボックス)</legend>
+        <label>
+          <input name="prog-lang" type="checkbox" value="0" />JavaScript
+        </label>
+        <label>
+          <input name="prog-lang" type="checkbox" value="1" />TypeScript
+        </label>
+        <label>
+          <input name="prog-lang" type="checkbox" value="2" />CoffeeScript
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>適当なグリッド</legend>
+        <table border="1">
+          <thead>
+            <tr>
+              <th style="width: 10%"></th>
+              <th style="width: 50%">Name</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <label style="display: inline-block; width: 100%">
+                  <input name="" type="checkbox" value="" />
+                </label>
+              </td>
+              <td>こういうテーブル、よくありますよね</td>
+              <td>テスト</td>
+            </tr>
+            <tr>
+              <td>
+                <label style="display: inline-block; width: 100%">
+                  <input name="" type="checkbox" value="" />
+                </label>
+              </td>
+              <td>
+                tableタグは保存データの表示等、一覧形式のデータ提示に便利です
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <label style="display: inline-block; width: 100%">
+                  <input name="" type="checkbox" value="" />
+                </label>
+              </td>
+              <td>
+                テンプレートエンジンなどではループで展開するようなイメージ
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+
+      <input name="" type="submit" value="送信" />
+    </form>
+    <script>
+      // チェックボックスのヘッダ要素にクリックイベントを設定
+      const triggerArea = document.querySelector('thead > tr > th');
+      triggerArea.dataset.type = 'check';
+
+      triggerArea.addEventListener('click', () => {
+        // 一括チェック
+        const prop = triggerArea.dataset.type === 'check';
+        [...document.querySelectorAll('tbody input[type=checkbox]')].forEach(
+          (d) => (d.checked = prop)
+        );
+
+        // 全選択・全クリアの切り替え
+        triggerArea.dataset.type = prop ? 'clear' : 'check';
+      });
+    </script>
+  </body>
+</html>
